@@ -11,8 +11,8 @@ shinyServer(function(input, output){
   
   
   # Load the stroke model
-  load("model1.RData")
-  summary(modell1)
+  load("model.RData")
+  summary(model1)
   
   data <- read.csv("healthcare-dataset-stroke-data.csv")
   data <- data %>% mutate(BMI = as.numeric(BMI)) %>%

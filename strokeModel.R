@@ -5,6 +5,10 @@ library(ggeasy)
 library(themis)
 
 # Load the dataset
+# oldwd <- getwd()
+# if (oldwd = getwd())
+# print(oldwd)
+
 StrokeData <- read.csv("healthcare-dataset-stroke-data.csv")
 
 
