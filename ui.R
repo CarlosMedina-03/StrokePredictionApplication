@@ -5,9 +5,6 @@ library(shiny)
 library(readr)
 library(tidyverse)
 
-strokeDataSet <- read_csv("healthcare-dataset-stroke-data.csv")
-
-
 # shinyUI(
 #     tags$head(
 #       tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
@@ -28,9 +25,9 @@ navbarPage(
                    checkboxGroupInput(
                      inputId = "predictors",
                      label = "Select Predictors:",
-                     choices = c(colnames(strokeDataSet)[!(colnames(strokeDataSet) %in% c("Stroke", "id", "BMI"))], "Height & Weight"),
+                     choices = c(colnames(StrokeData)[!(colnames(StrokeData) %in% c("Stroke", "id", "BMI"))], "Height & Weight"),
                      # Exclude the target variable
-                     selected = colnames(strokeDataSet)[!(colnames(strokeDataSet) %in% c("Stroke", "id", "BMI"))[1]] 
+                     selected = colnames(StrokeData)[!(colnames(StrokeData) %in% c("Stroke", "id", "BMI"))[1]] 
                      # Select the first predictor by default
                    )
                ),
@@ -55,11 +52,11 @@ navbarPage(
                          sidebarPanel(
                            # Id, title, and panel with choices using data set
                            selectInput("yvar", "Y Variable:", 
-                                       c("Select Y Variable", colnames(select(strokeDataSet, Age, BMI, AvgGlucoseLevel)))),
+                                       c("Select Y Variable", colnames(select(StrokeData, Age, BMI, AvgGlucoseLevel)))),
                            selectInput("xvar", "X Variable:", 
-                                       c("Select X Variable", colnames(select(strokeDataSet, Age, BMI, AvgGlucoseLevel)))),
+                                       c("Select X Variable", colnames(select(StrokeData, Age, BMI, AvgGlucoseLevel)))),
                            selectInput("catvar", "Categorial Variable:",
-                                       c("Select a Variable", colnames(select(strokeDataSet, -Age, -BMI, -id, -AvgGlucoseLevel))))
+                                       c("Select a Variable", colnames(select(StrokeData, -Age, -BMI, -id, -AvgGlucoseLevel))))
                          ),
                          mainPanel(
                            # creates scatterplot object

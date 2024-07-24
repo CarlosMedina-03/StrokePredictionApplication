@@ -253,6 +253,8 @@ shinyServer(function(input, output){
   
   
   
+  ############################################################## Regression
+  
   result <- reactiveVal(NULL)
   savedResults <- reactiveVal(list())
   
@@ -301,7 +303,7 @@ shinyServer(function(input, output){
     levels_gender <- c("Male", "Female")
     levels_hypertension <- c("0", "1")
     levels_heartdisease <- c("0", "1")
-    levels_evermarried <- c("No", "Yes")
+    levels_evermarried <- c("Yes", "No")
     levels_worktype <- c("Private", "Self-employed", "Govt_job")
     levels_residencetype <- c("Urban", "Rural")
     levels_smokingstatus <- c("formerly smoked", "never smoked", "smokes", "Unknown")

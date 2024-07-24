@@ -5,9 +5,35 @@ library(ggeasy)
 library(themis)
 
 # Load the dataset
-# oldwd <- getwd()
+oldWd <- getwd()
+oldWdLength <- nchar(oldwd)
+
+newWd <- "a0123456789b0123456789c0123456789d0123456789e0123456789f0123456789"
+newWdLength <- nchar(newWd)
+
+addedWd <- "/StrokePredictionApplication"
+addedWdLength <- nchar(addedWd)
+
+substr(newWd, start = 0, stop = length+1) <- oldWd
+substr(newWd, start = oldWdLength+1, stop = newWdLength) <- addedWd
+
+newWd <- substr(newWd, start = 0, stop = oldWdLength+addedWdLength)
+print(newWd)
+
+setwd(newWd)
+
+#rm()
+rm(newWd)
+rm(newWdLength)
+rm(oldWd)
+rm(oldWdLength)
+rm(addedWd)
+rm(addedWdLength)
+
+
 # if (oldwd = getwd())
 # print(oldwd)
+
 
 StrokeData <- read.csv("healthcare-dataset-stroke-data.csv")
 
