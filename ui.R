@@ -10,6 +10,8 @@ library(tidyverse)
 #       tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
 #     ),
 
+UIStrokeData <- read.csv("healthcare-dataset-stroke-data.csv")
+
 #navbarPage creates mutiple pages
 navbarPage(
   #theme = shinytheme("darkly"), #Add your theme name here
@@ -25,9 +27,9 @@ navbarPage(
                    checkboxGroupInput(
                      inputId = "predictors",
                      label = "Select Predictors:",
-                     choices = c(colnames(StrokeData)[!(colnames(StrokeData) %in% c("Stroke", "id", "BMI"))], "Height & Weight"),
+                     choices = c(colnames(UIStrokeData)[!(colnames(UIStrokeData) %in% c("Stroke", "id", "BMI"))], "Height & Weight"),
                      # Exclude the target variable
-                     selected = colnames(StrokeData)[!(colnames(StrokeData) %in% c("Stroke", "id", "BMI"))[1]] 
+                     selected = colnames(UIStrokeData)[!(colnames(UIStrokeData) %in% c("Stroke", "id", "BMI"))[1]] 
                      # Select the first predictor by default
                    )
                ),
@@ -52,11 +54,11 @@ navbarPage(
                          sidebarPanel(
                            # Id, title, and panel with choices using data set
                            selectInput("yvar", "Y Variable:", 
-                                       c("Select Y Variable", colnames(select(StrokeData, Age, BMI, AvgGlucoseLevel)))),
+                                       c("Select Y Variable", colnames(select(UIStrokeData, Age, BMI, AvgGlucoseLevel)))),
                            selectInput("xvar", "X Variable:", 
-                                       c("Select X Variable", colnames(select(StrokeData, Age, BMI, AvgGlucoseLevel)))),
+                                       c("Select X Variable", colnames(select(UIStrokeData, Age, BMI, AvgGlucoseLevel)))),
                            selectInput("catvar", "Categorial Variable:",
-                                       c("Select a Variable", colnames(select(StrokeData, -Age, -BMI, -id, -AvgGlucoseLevel))))
+                                       c("Select a Variable", colnames(select(UIStrokeData, -Age, -BMI, -id, -AvgGlucoseLevel))))
                          ),
                          mainPanel(
                            # creates scatterplot object

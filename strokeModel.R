@@ -6,7 +6,7 @@ library(themis)
 
 # Load the dataset
 oldWd <- getwd()
-oldWdLength <- nchar(oldwd)
+oldWdLength <- nchar(oldWd)
 
 newWd <- "a0123456789b0123456789c0123456789d0123456789e0123456789f0123456789"
 newWdLength <- nchar(newWd)
@@ -14,7 +14,7 @@ newWdLength <- nchar(newWd)
 addedWd <- "/StrokePredictionApplication"
 addedWdLength <- nchar(addedWd)
 
-substr(newWd, start = 0, stop = length+1) <- oldWd
+substr(newWd, start = 0, stop = oldWdLength+1) <- oldWd
 substr(newWd, start = oldWdLength+1, stop = newWdLength) <- addedWd
 
 newWd <- substr(newWd, start = 0, stop = oldWdLength+addedWdLength)
